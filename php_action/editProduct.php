@@ -10,7 +10,7 @@ if($_POST) {
 	$brandName 			= $_POST['editBrandName'];
 	$categoryName 	= $_POST['editCategoryName'];
 	$productStatus 	= $_POST['editProductStatus'];
-	$is_vatable		= $_POST[editIsVatable'];
+	$is_vatable		= $_POST['editIsVatable'];
 				
 	$sql = "UPDATE product SET product_name = '$productName', categories_id = '$categoryName', active = '$productStatus', status = 1 WHERE product_id = $productId";
 
