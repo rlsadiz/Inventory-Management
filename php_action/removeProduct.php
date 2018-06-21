@@ -9,7 +9,7 @@ $productId = $_POST['productId'];
 
 if($productId) { 
 
- $sql = "UPDATE product SET active = 2, status = 2 WHERE product_id = {$productId}";
+ $sql = "UPDATE product SET product_status = 3 WHERE id_product = $productId";
 
  if($connect->query($sql) === TRUE) {
  	$valid['success'] = true;

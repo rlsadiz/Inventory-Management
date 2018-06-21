@@ -37,13 +37,23 @@ if($_POST) {
 		}
 	}
 	
-	$categories_code = str_replace(' ', '-', $categoriesName);
-	$categories_code = strtoupper(substr($categories_code, 0, 4));
-	$categories_code_sql = "SELECT category_code FROM category WHERE category_code = '$categories_code'";
-	$categories_result = $connect->query($categories_code_sql);
-	if($categories_result->num_rows > 0) {
-		$categories_code = strtoupper(substr($categoriesName, 0, 3).substr($categoriesName, 4, 1));
+	$categories_code = "";
+	$categories_word = preg_replace('/[^A-Za-z0-9\ ]/', '', $categoriesName);
+	$categories_word = explode(" ", $categories_word);
+	if(count($categories_word) == 1) {
+		$categories_code = strtoupper(substr($categories_code, 0, 3));
 	}
+	else if(count($categories_word) == 2) {
+		$cat1 = "";
+		$cat1 = strtoupper(substr($categories_word[0], 1, strlen($categories_word[0]) - 1));
+		$cat1 = preg_replace('/[AEIOU]/', '', $cat1);
+		$categories_code = strtoupper(substr($categories_word[0], 0, 1)).substr($cat1, 0, 1).strtoupper(substr($categories_word[1], 0, 1));
+	}
+	else {
+		$categories_code = strtoupper(substr($categories_code[0], 0, 1)).
+			strtoupper(substr($categories_code[1], 0, 1)).strtoupper(substr($categories_code[2], 0, 1));
+	}
+
 
 	$sql = "INSERT INTO category (fk_user, 	fk_parent_category, tree_id, category_code, category_name, level, category_status) 
 	VALUES ('$user_id', '$categoriesParent', '$tree_id', '$categories_code', '$categoriesName', '$level', '$categoriesStatus')";

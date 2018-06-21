@@ -247,66 +247,67 @@ function editCategories(categoriesId = null) {
 } // /edit categories function
 
 // remove categories function
-function removeCategories(categoriesId = null) {
-		
-	$.ajax({
-		url: 'php_action/fetchSelectedCategories.php',
-		type: 'post',
-		data: {categoriesId: categoriesId},
-		dataType: 'json',
-		success:function(response) {			
+function removeCategories(categoriesId = null) {	
+	if(categoriesId) {
+		$('#removeCategoriesId').remove();
+		$.ajax({
+			url: 'php_action/fetchSelectedCategories.php',
+			type: 'post',
+			data: {categoriesId: categoriesId},
+			dataType: 'json',
+			success:function(response) {	
+				console.log(categoriesId);
+				$('.removeCategoriesFooter').after('<input type="hidden" name="removeCategoriesId" id="removeCategoriesId" value="'+response.id_category+'" /> ');			
+				
+				// remove categories btn clicked to remove the categories function
+				$("#removeCategoriesBtn").unbind('click').bind('click', function() {
+					// remove categories btn
+					$("#removeCategoriesBtn").button('loading');
+				
+					$.ajax({
+						url: 'php_action/removeCategories.php',
+						type: 'post',
+						data: {categoriesId: categoriesId},
+						dataType: 'json',
+						success:function(response) {
+							if(response.success == true) {
+								// remove categories btn
+								$("#removeCategoriesBtn").button('reset');
+								// close the modal 
+								$("#removeCategoriesModal").modal('hide');
+								// update the manage categories table
+								manageCategoriesTable.ajax.reload(null, false);
+								// udpate the messages
+								$('.remove-messages').html('<div class="alert alert-success">'+
+								'<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+								'<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
+								'</div>');
 
-			// remove categories btn clicked to remove the categories function
-			$("#removeCategoriesBtn").unbind('click').bind('click', function() {
-				// remove categories btn
-				$("#removeCategoriesBtn").button('loading');
+								$(".alert-success").delay(500).show(10, function() {
+									$(this).delay(3000).hide(10, function() {
+										$(this).remove();
+									});
+								}); // /.alert
+							} else {
+								// close the modal 
+								$("#removeCategoriesModal").modal('hide');
 
-				$.ajax({
-					url: 'php_action/removeCategories.php',
-					type: 'post',
-					data: {categoriesId: categoriesId},
-					dataType: 'json',
-					success:function(response) {
-						if(response.success == true) {
- 							// remove categories btn
-							$("#removeCategoriesBtn").button('reset');
-							// close the modal 
-							$("#removeCategoriesModal").modal('hide');
-							// update the manage categories table
-							manageCategoriesTable.ajax.reload(null, false);
-							// udpate the messages
-							$('.remove-messages').html('<div class="alert alert-success">'+
-	            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
-	            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
-		          '</div>');
+								// udpate the messages
+								$('.remove-messages').html('<div class="alert alert-success">'+
+								'<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+								'<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
+								'</div>');
 
-	  	  			$(".alert-success").delay(500).show(10, function() {
-								$(this).delay(3000).hide(10, function() {
-									$(this).remove();
-								});
-							}); // /.alert
- 						} else {
- 							// close the modal 
-							$("#removeCategoriesModal").modal('hide');
-
- 							// udpate the messages
-							$('.remove-messages').html('<div class="alert alert-success">'+
-	            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
-	            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
-		          '</div>');
-
-	  	  			$(".alert-success").delay(500).show(10, function() {
-								$(this).delay(3000).hide(10, function() {
-									$(this).remove();
-								});
-							}); // /.alert
- 						} // /else
-						
-						
-					} // /success function
-				}); // /ajax function request server to remove the categories data
-			}); // /remove categories btn clicked to remove the categories function
-
-		} // /response
-	}); // /ajax function to fetch the categories data
+								$(".alert-success").delay(500).show(10, function() {
+									$(this).delay(3000).hide(10, function() {
+										$(this).remove();
+									});
+								}); // /.alert
+							} // /else
+						} // /success function
+					}); // /ajax function request server to remove the categories data
+				});
+			} // /response
+		}); // /ajax function to fetch the categories data
+	}
 } // remove categories function

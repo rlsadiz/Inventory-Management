@@ -170,9 +170,9 @@
   </div>
   <!-- /modal-dailog -->
 </div>
-<!-- /categories brand -->
+</div><!-- /edit categories -->
 
-<!-- categories brand -->
+<!-- remove categories -->
 <div class="modal fade" tabindex="-1" role="dialog" id="removeCategoriesModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -190,7 +190,7 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<!-- /categories brand -->
+<!-- /remove categories -->
 
 
 <script src="custom/js/categories.js"></script>

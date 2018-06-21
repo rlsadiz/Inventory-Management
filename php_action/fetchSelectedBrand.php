@@ -4,7 +4,7 @@ require_once 'core.php';
 
 $brandId = $_POST['brandId'];
 
-$sql = "SELECT id_brand, brand_name, brand_status FROM brand";
+$sql = "SELECT id_brand, brand_name, brand_status FROM brand WHERE id_brand = $brandId";
 $result = $connect->query($sql);
 
 if($result->num_rows > 0) { 

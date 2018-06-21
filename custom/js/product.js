@@ -45,7 +45,8 @@ $(document).ready(function() {
 			var brandName = $("#brandName").val();
 			var categoryName = $("#categoryName").val();
 			var productStatus = $("#productStatus").val();
-	
+			var vatable = $("#vatable").is(":checked");
+			
 			if(productImage == "") {
 				$("#productImage").closest('.center-block').after('<p class="text-danger">Product Image field is required</p>');
 				$('#productImage').closest('.form-group').addClass('has-error');
@@ -95,7 +96,16 @@ $(document).ready(function() {
 				// success out for form 
 				$("#productStatus").closest('.form-group').addClass('has-success');	  	
 			}	// /else
-
+			
+			if($vatable) {
+				$vatable = 1;
+			}
+			else {
+				$vatable = 0;
+			}
+			
+			$
+			
 			if(productImage && productName && brandName && categoryName && productStatus) {
 				// submit loading button
 				$("#createProductBtn").button('loading');
@@ -211,12 +221,8 @@ function editProduct(productId = null) {
 				
 				// product name
 				$("#editProductName").val(response.product_name);
-				// quantity
-				$("#editQuantity").val(response.quantity);
-				// rate
-				$("#editRate").val(response.rate);
 				// brand name
-				$("#editBrandName").val(response.brand_id);
+				$("#editBrandName").val(response.brand_name);
 				// category name
 				$("#editCategoryName").val(response.categories_id);
 				// status
@@ -229,12 +235,10 @@ function editProduct(productId = null) {
 					var productImage = $("#editProductImage").val();
 					var productName = $("#editProductName").val();
 					var quantity = $("#editQuantity").val();
-					var rate = $("#editRate").val();
 					var brandName = $("#editBrandName").val();
 					var categoryName = $("#editCategoryName").val();
 					var productStatus = $("#editProductStatus").val();
 								
-
 					if(productName == "") {
 						$("#editProductName").after('<p class="text-danger">Product Name field is required</p>');
 						$('#editProductName').closest('.form-group').addClass('has-error');

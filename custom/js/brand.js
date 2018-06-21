@@ -243,23 +243,21 @@ function removeBrands(brandId = null) {
 								manageBrandTable.ajax.reload(null, false);
 								
 								$('.remove-messages').html('<div class="alert alert-success">'+
-			            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
-			            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
-			          '</div>');
+								'<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+								'<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
+								'</div>');
 
-			  	  			$(".alert-success").delay(500).show(10, function() {
-										$(this).delay(3000).hide(10, function() {
+								$(".alert-success").delay(500).show(10, function() {
+											$(this).delay(3000).hide(10, function() {
 											$(this).remove();
-										});
+											});
 									}); // /.alert
 							} else {
 
 							} // /else
 						} // /response messages
 					}); // /ajax function to remove the brand
-
 				}); // /click on remove button to remove the brand
-
 			} // /success
 		}); // /ajax
 

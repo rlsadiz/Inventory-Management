@@ -4,26 +4,25 @@
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> Manage Product</div>
+				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> Manage Purchase</div>
 			</div> <!-- /panel-heading -->
 			<div class="panel-body">
 
 				<div class="remove-messages"></div>
 
 				<div class="div-action pull pull-right" style="padding-bottom:20px;">
-					<button class="btn btn-default" style="width:140px" data-toggle="modal" id="addProductModalBtn" data-target="#addProductModal"> <i class="glyphicon glyphicon-plus-sign"></i> Add Product </button>
+					<button class="btn btn-default" style="width:140px" data-toggle="modal" id="addPurchaseModalBtn" data-target="#addPurchaseModal"> <i class="glyphicon glyphicon-plus-sign"></i> Add Purchase </button>
 				</div> <!-- /div-action -->				
 				
-				<table class="table" id="manageProductTable">
+				<table class="table" id="managePurchaseTable">
 					<thead>
 						<tr>
-							<th style="width:10%">Photo</th>
-							<th style="width:12%">Product Code</th>
-							<th style="width:28%">Product Name</th>
-							<th style="width:10%">Brand</th>
-							<th style="width:12%">Category</th>
-							<th style="width:8%">SKU</th>
+							<th style="width:10%">Purchase Code</th>
+							<th style="width:31%">Supplier</th>
+							<th style="width:13%">Total Amount</th>
+							<th style="width:13%">Paid Amount</th>
 							<th style="width:10%">Status</th>
+							<th style="width:15%">Updated At</th>
 							<th style="width:10%">Options</th>
 						</tr>
 					</thead>
@@ -274,6 +273,6 @@
 <!-- /remove product -->
 
 
-<script src="custom/js/product.js"></script>
+<script src="custom/js/purchase.js"></script>
 
 <?php require_once 'includes/footer.php'; ?>
