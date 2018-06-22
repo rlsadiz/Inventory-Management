@@ -24,6 +24,7 @@
 
 <!-- DataTables -->
 <link rel="stylesheet" href="assests/plugins/datatables/jquery.dataTables.min.css">
+<script src="assests/plugins/datatables/jquery.dataTables.min.js"></script>
 
 <!-- file input -->
 <link rel="stylesheet" href="assests/plugins/fileinput/css/fileinput.min.css">

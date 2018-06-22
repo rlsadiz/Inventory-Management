@@ -7,9 +7,5 @@
 	<script src="assests/plugins/fileinput/js/plugins/purify.min.js" type="text/javascript"></script>
 	<script src="assests/plugins/fileinput/js/fileinput.min.js"></script>	
 
-
-	<!-- DataTables -->
-	<script src="assests/plugins/datatables/jquery.dataTables.min.js"></script>
-
 </body>
 </html>

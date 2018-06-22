@@ -425,7 +425,7 @@ if($_GET['o'] == 'add') {
 </div><!-- /.modal -->
 <!-- /remove order-->
 
-
+<script src="assests/plugins/datatables plugins/api/fnFindCellRowIndexes.js"></script>
 <script src="custom/js/order.js"></script>
 
 <?php require_once 'includes/footer.php'; ?>
