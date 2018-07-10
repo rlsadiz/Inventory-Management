@@ -119,12 +119,16 @@
 	        </div> <!-- /form-group-->
 			
 			<div class="form-group">
-	        	<label for="productVatable" class="col-sm-3 control-label"> Is Vatable? </label>
-	        	<label class="col-sm-1 control-label">: </label>
+				<label for="productVatable" class="col-sm-3 control-label">Is Vatable: </label>
+				<label class="col-sm-1 control-label">: </label>
 				<div class="col-sm-8">
-					<input type="checkbox" class="custom-control-input" id="vatable" name="vatable"> <br>
+					<select class="form-control" id="productVatable" name="productVatable">
+						<option value="">~~SELECT~~</option>
+						<option value="1">Vatable</option>
+						<option value="2">Non-Vatable</option>
+					</select>
 				</div>
-	        </div> <!-- /form-group-->			
+			</div> <!-- /form-group-->			
 		</div> <!-- /modal-body -->
 	      
 		<div class="modal-footer">
@@ -141,6 +145,7 @@
 <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog">
 	<div class="modal-dialog">
 	<div class="modal-content">
+		<form class="form-horizontal" id="editProductForm" action="php_action/editProduct.php" method="POST"  enctype="multipart/form-data">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<h4 class="modal-title"><i class="fa fa-edit"></i> Edit Product</h4>
@@ -162,7 +167,6 @@
 				</ul>
 
 				<!-- Tab panes -->
-				<form class="form-horizontal" id="editProductForm" action="php_action/editProduct.php" method="POST"  enctype="multipart/form-data">
 				<div class="tab-content">
 					<!-- product image -->
 					<div role="tabpanel" class="tab-pane active" id="photo">
@@ -229,14 +233,25 @@
 							<div class="col-sm-8">
 								<select class="form-control" id="editProductStatus" name="editProductStatus">
 									<option value="">~~SELECT~~</option>
-									<option value="1">Available</option>
-									<option value="2">Not Available</option>
+									<option value="1">Active</option>
+									<option value="2">Inactive</option>
 								</select>
 							</div>
-						</div> <!-- /form-group-->	 
+						</div> <!-- /form-group-->	
+						
+						<div class="form-group">
+							<label for="editProductVatable" class="col-sm-3 control-label">Is Vatable: </label>
+							<label class="col-sm-1 control-label">: </label>
+							<div class="col-sm-8">
+								<select class="form-control" id="editProductVatable" name="editProductVatable">
+									<option value="">~~SELECT~~</option>
+									<option value="1">Vatable</option>
+									<option value="2">Non-Vatable</option>
+								</select>
+							</div>
+						</div> <!-- /form-group-->	 						
 					</div> <!-- /product info -->		     	
-				</div> <!-- /tab-content --> 
-				</form> <!-- /.form -->		
+				</div> <!-- /tab-content --> 	
 			</div> <!-- /div-result -->
 		</div> <!-- /modal-body -->
 		
@@ -244,7 +259,7 @@
 			<button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Close</button>
 			<button type="submit" class="btn btn-success" id="editProductBtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-ok-sign"></i> Save Changes</button>
 		</div> <!-- /modal-footer -->		      
-     	
+     	</form> <!-- /.form -->	
     </div> <!-- /modal-content -->
 	</div> <!-- /modal-dailog -->	
 </div> <!-- /edit product -->

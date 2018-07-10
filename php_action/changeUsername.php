@@ -7,12 +7,12 @@ if($_POST) {
 	$valid['success'] = array('success' => false, 'messages' => array());
 
 	$username = $_POST['username'];
-	$userId = $_POST['user_id'];
+	$userId = $_POST['c_user_id'];
 
-	$sql = "UPDATE users SET username = '$username' WHERE user_id = {$userId}";
+	$sql = "UPDATE user SET username = '$username' WHERE user_id = {$userId}";
 	if($connect->query($sql) === TRUE) {
 		$valid['success'] = true;
-		$valid['messages'] = "Successfully Update";	
+		$valid['messages'] = "Successfully Updated";	
 	} else {
 		$valid['success'] = false;
 		$valid['messages'] = "Error while updating product info";

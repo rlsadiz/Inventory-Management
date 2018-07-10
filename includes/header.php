@@ -55,7 +55,7 @@
       <ul class="nav navbar-nav navbar-right">        
 		<li id="navHome"><a href="index.php"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
 		
-      	<li id="navDashboard"><a href="dashboard.php"><i class="glyphicon glyphicon-list-alt"></i>  Dashboard</a></li>        
+      	<li id="navDashboard"><a href="dashboard.php"><i class="glyphicon glyphicon-list-alt"></i>  Dashboard</a></li>
         
         <li id="navBrand"><a href="brand.php"><i class="glyphicon glyphicon-tags"></i>  Brand</a></li>        
 
@@ -74,8 +74,8 @@
         <li class="dropdown" id="navOrder">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-shopping-cart"></i> Orders <span class="caret"></span></a>
           <ul class="dropdown-menu">            
-            <li id="topNavAddOrder"><a href="orders.php?o=add"> <i class="glyphicon glyphicon-plus"></i> Add Orders</a></li>            
-            <li id="topNavManageOrder"><a href="orders.php?o=manord"> <i class="glyphicon glyphicon-edit"></i> Manage Orders</a></li>            
+            <li id="topNavAddOrder"><a href="orders.php"> <i class="glyphicon glyphicon-plus"></i> Add Orders</a></li>            
+            <li id="topNavManageOrder"><a href="orders-manage.php"> <i class="glyphicon glyphicon-edit"></i> Manage Orders</a></li>      
           </ul>
         </li> 
 

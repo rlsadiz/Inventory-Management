@@ -34,8 +34,9 @@ if($result->num_rows > 0) {
 	    Action <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu">
+		<l1><a type="button" onclick="changeStatusProduct('.$productId.')"> <i class="glyphicon glyphicon-pencil"></i> Change Status</a></li>
 	    <li><a type="button" data-toggle="modal" id="editProductModalBtn" data-target="#editProductModal" onclick="editProduct('.$productId.')"> <i class="glyphicon glyphicon-edit"></i> Edit</a></li>
-	    <li><a type="button" data-toggle="modal" data-target="#removeProductModal" id="removeProductModalBtn" onclick="removeProduct('.$productId.')"> <i class="glyphicon glyphicon-trash"></i> Remove</a></li>       
+	    <li><a type="button" data-toggle="modal" id="removeProductModalBtn" data-target="#removeProductModal"  onclick="removeProduct('.$productId.')"> <i class="glyphicon glyphicon-trash"></i> Remove</a></li>       
 	  </ul>
 	</div>';
 

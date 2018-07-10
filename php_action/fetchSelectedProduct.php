@@ -11,7 +11,8 @@ $sql = "SELECT
 			p.product_code, 
 			p.product_name, 
 			p.product_image, 
-			p.product_status 
+			p.product_status,
+			p.is_vatable
 		FROM product p
 		JOIN brand b ON b.id_brand = p.fk_brand
 		WHERE id_product = $productId";

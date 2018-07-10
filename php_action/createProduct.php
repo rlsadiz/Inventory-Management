@@ -10,7 +10,7 @@ if($_POST) {
 	$categoryId 	= $_POST['categoryName'];
 	$productStatus 	= $_POST['productStatus'];
 	$vatable		= $_POST['vatable'];
-	$user_id = $_SESSION['userId'];
+	$user_id		= $_SESSION['userId'];
 	
 	$brand_code = $connect->query("SELECT brand_code FROM brand WHERE id_brand = $brandId");
 	$brand_code = $brand_code->fetch_array();
@@ -21,6 +21,13 @@ if($_POST) {
 	$product_code = sprintf('%03d', $product_code[0] + 1);
 	
 	$product_code = $brand_code."-".$product_code;
+	
+	if($vatable == "on") {
+		$vatable = 1;
+	}
+	else {
+		$vatable = 0;
+	}
 	
 	$type = explode('.', $_FILES['productImage']['name']);
 	$type = $type[count($type)-1];		
@@ -37,8 +44,7 @@ if($_POST) {
 					$valid['messages'] = "Successfully Added";	
 				} else {
 					$valid['success'] = false;
-					$valid['messages'] = "Error while adding the members";
-					echo $connect->error;
+					$valid['messages'] = $connect -> error;
 				}
 
 			}	else {

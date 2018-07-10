@@ -2,9 +2,9 @@
 
 require_once 'core.php';
 
-$skuId = $_GET['skuId'];
+$skuId = $_POST['skuId'];
 
-$sql = "SELECT sku.id_sku, sku.sku_code, p.product_name, sku.variation, sku.cost, sku.price, sku.critical_quantity, sku.sku_status, sku.updated_at
+$sql = "SELECT sku.id_sku, sku.sku_code, p.product_name, sku.variation, sku.cost, sku.price, sku.critical_quantity, sku.sku_status
 		FROM product_sku sku
 		JOIN product p ON p.id_product = sku.fk_product
 		WHERE id_sku = $skuId";

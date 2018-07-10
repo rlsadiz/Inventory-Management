@@ -3,11 +3,10 @@
 require_once 'core.php';
 
 $barcode = $_POST['barcode'];
-$sql = "SELECT barcode, product_name, IFNULL(promotion_price, price) price, vatable
-		FROM price_list
+$sql = "SELECT barcode, quantity
+		FROM stock
 		WHERE barcode = '$barcode'";
 $result = $connect->query($sql);
-
 
 $row = "";
 

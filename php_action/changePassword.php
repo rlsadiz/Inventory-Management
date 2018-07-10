@@ -9,9 +9,9 @@ if($_POST) {
 	$currentPassword = md5($_POST['password']);
 	$newPassword = md5($_POST['npassword']);
 	$conformPassword = md5($_POST['cpassword']);
-	$userId = $_POST['user_id'];
+	$userId = $_POST['p_user_id'];
 
-	$sql ="SELECT * FROM users WHERE user_id = {$userId}";
+	$sql ="SELECT * FROM user WHERE id_user = {$userId}";
 	$query = $connect->query($sql);
 	$result = $query->fetch_assoc();
 
@@ -19,7 +19,7 @@ if($_POST) {
 
 		if($newPassword == $conformPassword) {
 
-			$updateSql = "UPDATE users SET password = '$newPassword' WHERE user_id = {$userId}";
+			$updateSql = "UPDATE user SET password = '$newPassword' WHERE id_user = {$userId}";
 			if($connect->query($updateSql) === TRUE) {
 				$valid['success'] = true;
 				$valid['messages'] = "Successfully Updated";		

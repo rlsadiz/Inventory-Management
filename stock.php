@@ -13,11 +13,12 @@
 				<table class="table" id="manageStocksTable">
 					<thead>
 						<tr>
-							<th style="width:15%">SKU Code</th>
-							<th style="width:35%">Product Name</th>
+							<th style="width:12%">Barcode</th>
+							<th style="width:12%">SKU Code</th>
+							<th style="width:28%">Product Name</th>
 							<th style="width:10%">Quantity</th>
-							<th style="width:20%">Last Purchase Date</th>
-							<th style="width:20%">Last Order Date</th>
+							<th style="width:14%">Last Purchase</th>
+							<th style="width:14%">Last Order</th>
 							<th style="width:10%">Status</th>
 						</tr>	
 					</thead>

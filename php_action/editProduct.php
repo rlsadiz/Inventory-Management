@@ -5,14 +5,13 @@ require_once 'core.php';
 $valid['success'] = array('success' => false, 'messages' => array());
 
 if($_POST) {
-	$productId = $_POST['productId'];
-	$productName 		= $_POST['editProductName']; 
-	$brandName 			= $_POST['editBrandName'];
+	$productId 		= $_POST['product_id'];
+	$productName 	= $_POST['editProductName']; 	
 	$categoryName 	= $_POST['editCategoryName'];
 	$productStatus 	= $_POST['editProductStatus'];
-	$is_vatable		= $_POST['editIsVatable'];
-				
-	$sql = "UPDATE product SET product_name = '$productName', categories_id = '$categoryName', active = '$productStatus', status = 1 WHERE product_id = $productId";
+	$is_vatable		= $_POST['editProductVatable'];
+	
+	$sql = "UPDATE product SET product_name = '$productName', fk_category = '$categoryName', product_status = '$productStatus', is_vatable = $is_vatable WHERE id_product = $productId";
 
 	if($connect->query($sql) === TRUE) {
 		$valid['success'] = true;

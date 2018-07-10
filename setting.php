@@ -2,7 +2,7 @@
 
 <?php 
 $user_id = $_SESSION['userId'];
-$sql = "SELECT * FROM users WHERE user_id = {$user_id}";
+$sql = "SELECT * FROM user WHERE id_user = $user_id";
 $query = $connect->query($sql);
 $result = $query->fetch_assoc();
 
@@ -40,7 +40,7 @@ $connect->close();
 
 					  <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10">
-					    	<input type="hidden" name="user_id" id="user_id" value="<?php echo $result['user_id'] ?>" /> 
+					    	<input type="hidden" name="user_id" id="c_user_id" value="<?php echo $result['user_id'] ?>" /> 
 					      <button type="submit" class="btn btn-success" data-loading-text="Loading..." id="changeUsernameBtn"> <i class="glyphicon glyphicon-ok-sign"></i> Save Changes </button>
 					    </div>
 					  </div>
@@ -56,27 +56,27 @@ $connect->close();
 						<div class="form-group">
 					    <label for="password" class="col-sm-2 control-label">Current Password</label>
 					    <div class="col-sm-10">
-					      <input type="password" class="form-control" id="password" name="password" placeholder="Current Password">
+					      <input type="password" class="form-control" id="password" name="password" placeholder="Current Password" autocomplete="off">
 					    </div>
 					  </div>
 
 					  <div class="form-group">
 					    <label for="npassword" class="col-sm-2 control-label">New password</label>
 					    <div class="col-sm-10">
-					      <input type="password" class="form-control" id="npassword" name="npassword" placeholder="New Password">
+					      <input type="password" class="form-control" id="npassword" name="npassword" placeholder="New Password" autocomplete="off">
 					    </div>
 					  </div>
 
 					  <div class="form-group">
 					    <label for="cpassword" class="col-sm-2 control-label">Confirm Password</label>
 					    <div class="col-sm-10">
-					      <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password">
+					      <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password" autocomplete="off">
 					    </div>
 					  </div>
 
 					  <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10">
-					    	<input type="hidden" name="user_id" id="user_id" value="<?php echo $result['user_id'] ?>" /> 
+					    	<input type="hidden" name="p_user_id" id="p_user_id" value="<?php echo $result['id_user'] ?>" /> 
 					      <button type="submit" class="btn btn-primary"> <i class="glyphicon glyphicon-ok-sign"></i> Save Changes </button>
 					      
 					    </div>

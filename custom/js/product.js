@@ -45,7 +45,7 @@ $(document).ready(function() {
 			var brandName = $("#brandName").val();
 			var categoryName = $("#categoryName").val();
 			var productStatus = $("#productStatus").val();
-			var vatable = $("#vatable").is(":checked");
+			var productVatable = $("#productVatable").val();
 			
 			if(productImage == "") {
 				$("#productImage").closest('.center-block').after('<p class="text-danger">Product Image field is required</p>');
@@ -96,23 +96,23 @@ $(document).ready(function() {
 				// success out for form 
 				$("#productStatus").closest('.form-group').addClass('has-success');	  	
 			}	// /else
+				
+			if(productVatable == "") {
+				$("#productVatable").after('<p class="text-danger">Product Vatable field is required</p>');
+				$('#productVatable').closest('.form-group').addClass('has-error');
+			}	else {
+				// remov error text field
+				$("#productVatable").find('.text-danger').remove();
+				// success out for form 
+				$("#productVatable").closest('.form-group').addClass('has-success');	  	
+			}	// /else
 			
-			if($vatable) {
-				$vatable = 1;
-			}
-			else {
-				$vatable = 0;
-			}
-			
-			$
-			
-			if(productImage && productName && brandName && categoryName && productStatus) {
+			if(productImage && productName && brandName && categoryName && productStatus && productVatable) {
 				// submit loading button
 				$("#createProductBtn").button('loading');
 
 				var form = $(this);
 				var formData = new FormData(this);
-				console.log("lol");
 				$.ajax({
 					url : form.attr('action'),
 					type: form.attr('method'),
@@ -128,7 +128,7 @@ $(document).ready(function() {
 						
 						if(response.success == true) {
 							// reload the manage product table
-							//manageProductTable.ajax.reload(null, false);
+							manageProductTable.ajax.reload(null, false);
 							
 							// reset the form text
 							$("#submitProductForm")[0].reset();
@@ -167,6 +167,18 @@ $(document).ready(function() {
 	// remove product 	
 
 }); // document.ready fucntion
+
+function changeStatusProduct(productId = null) {
+	$.ajax({
+		url: 'php_action/changeStatusProduct.php',
+		type: 'post',
+		data: {productId: productId},
+		dataType: 'json',
+		success:function(response) {
+			manageProductTable.ajax.reload(null, true);
+		}
+	});
+}
 
 function editProduct(productId = null) {
 
@@ -224,9 +236,11 @@ function editProduct(productId = null) {
 				// brand name
 				$("#editBrandName").val(response.brand_name);
 				// category name
-				$("#editCategoryName").val(response.categories_id);
+				$("#editCategoryName").val(response.fk_category);
 				// status
-				$("#editProductStatus").val(response.active);
+				$("#editProductStatus").val(response.product_status);
+				// vatable
+				$("#editProductVatable").val(response.is_vatable);
 
 				// update the product data function
 				$("#editProductForm").unbind('submit').bind('submit', function() {
@@ -234,49 +248,19 @@ function editProduct(productId = null) {
 					// form validation
 					var productImage = $("#editProductImage").val();
 					var productName = $("#editProductName").val();
-					var quantity = $("#editQuantity").val();
-					var brandName = $("#editBrandName").val();
 					var categoryName = $("#editCategoryName").val();
 					var productStatus = $("#editProductStatus").val();
-								
+					var productVatable = $("#editProductVatable").val();
+					
 					if(productName == "") {
 						$("#editProductName").after('<p class="text-danger">Product Name field is required</p>');
 						$('#editProductName').closest('.form-group').addClass('has-error');
+						is_passed = false;
 					}	else {
 						// remov error text field
 						$("#editProductName").find('.text-danger').remove();
 						// success out for form 
 						$("#editProductName").closest('.form-group').addClass('has-success');	  	
-					}	// /else
-
-					if(quantity == "") {
-						$("#editQuantity").after('<p class="text-danger">Quantity field is required</p>');
-						$('#editQuantity').closest('.form-group').addClass('has-error');
-					}	else {
-						// remov error text field
-						$("#editQuantity").find('.text-danger').remove();
-						// success out for form 
-						$("#editQuantity").closest('.form-group').addClass('has-success');	  	
-					}	// /else
-
-					if(rate == "") {
-						$("#editRate").after('<p class="text-danger">Rate field is required</p>');
-						$('#editRate').closest('.form-group').addClass('has-error');
-					}	else {
-						// remov error text field
-						$("#editRate").find('.text-danger').remove();
-						// success out for form 
-						$("#editRate").closest('.form-group').addClass('has-success');	  	
-					}	// /else
-
-					if(brandName == "") {
-						$("#editBrandName").after('<p class="text-danger">Brand Name field is required</p>');
-						$('#editBrandName').closest('.form-group').addClass('has-error');
-					}	else {
-						// remov error text field
-						$("#editBrandName").find('.text-danger').remove();
-						// success out for form 
-						$("#editBrandName").closest('.form-group').addClass('has-success');	  	
 					}	// /else
 
 					if(categoryName == "") {
@@ -292,6 +276,7 @@ function editProduct(productId = null) {
 					if(productStatus == "") {
 						$("#editProductStatus").after('<p class="text-danger">Product Status field is required</p>');
 						$('#editProductStatus').closest('.form-group').addClass('has-error');
+						is_passed = false;
 					}	else {
 						// remov error text field
 						$("#editProductStatus").find('.text-danger').remove();
@@ -299,13 +284,24 @@ function editProduct(productId = null) {
 						$("#editProductStatus").closest('.form-group').addClass('has-success');	  	
 					}	// /else					
 
-					if(productName && quantity && rate && brandName && categoryName && productStatus) {
+					if(productVatable == "") {
+						$("#editProductVatable").after('<p class="text-danger">Product Vatable field is required</p>');
+						$('#editProductVatable').closest('.form-group').addClass('has-error');
+					}	else {
+						// remov error text field
+						$("#editProductVatable").find('.text-danger').remove();
+						// success out for form 
+						$("#editProductVatable").closest('.form-group').addClass('has-success');	  	
+					}	// /else	
+					
+					if(productName && categoryName && productStatus && productVatable) {
 						// submit loading button
 						$("#editProductBtn").button('loading');
 
 						var form = $(this);
 						var formData = new FormData(this);
-
+						formData.append('product_id', productId);
+						
 						$.ajax({
 							url : form.attr('action'),
 							type: form.attr('method'),
@@ -324,18 +320,18 @@ function editProduct(productId = null) {
 																			
 									// shows a successful message after operation
 									$('#edit-product-messages').html('<div class="alert alert-success">'+
-				            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
-				            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
-				          '</div>');
+										'<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+										'<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
+										'</div>');
 
 									// remove the mesages
-				          $(".alert-success").delay(500).show(10, function() {
+									$(".alert-success").delay(500).show(10, function() {
 										$(this).delay(3000).hide(10, function() {
 											$(this).remove();
 										});
 									}); // /.alert
 
-				          // reload the manage student table
+									// reload the manage student table
 									manageProductTable.ajax.reload(null, true);
 
 									// remove text-error 
@@ -345,7 +341,10 @@ function editProduct(productId = null) {
 
 								} // /if response.success
 								
-							} // /success function
+							}, // /success function
+							error: function (xhr, ajaxOptions, thrownError) {
+								alert(xhr.status +  ": " + thrownError);
+							}
 						}); // /ajax function
 					}	 // /if validation is ok 					
 
