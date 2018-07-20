@@ -61,11 +61,17 @@
 
         <li id="navCategories"><a href="categories.php"> <i class="glyphicon glyphicon-th-list"></i> Category</a></li>        
 
-        <li id="navProduct"><a href="product.php"> <i class="glyphicon glyphicon-gift"></i> Product </a></li>  
-		
-		<li id="navsku"><a href="sku.php"> <i class="glyphicon glyphicon-barcode"></i> SKU </a></li>  
+		<li class="dropdown" id="navProduct">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-barcode"></i> Product <span class="caret"></span></a>
+          <ul class="dropdown-menu">            
+			<li id="topNavProduct"><a href="product.php"> <i class="glyphicon glyphicon-edit"></i> Products </a></li>            
+            <li id="topNavSKU"><a href="sku.php"> <i class="glyphicon glyphicon-edit"></i> SKU </a></li>      
+          </ul>
+        </li> 
 		
 		<li id="navPrice"><a href="pricing.php"> <i class="glyphicon glyphicon glyphicon-usd"></i> Pricing </a></li> 
+		
+		<li id="navSupplier"><a href="supplier.php"> <i class="glyphicon glyphicon glyphicon glyphicon-briefcase"></i> Supplier </a></li> 
 		
 		<li id="navPurchase"><a href="purchase.php"> <i class="glyphicon glyphicon glyphicon-credit-card"></i> Purchase </a></li>  
 		

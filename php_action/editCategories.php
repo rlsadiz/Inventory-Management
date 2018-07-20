@@ -49,7 +49,7 @@ if($_POST) {
 		$valid['messages'] = "Successfully Updated";	
 	} else {
 	 	$valid['success'] = false;
-	 	$valid['messages'] = "Error while updating the categories";
+	 	$valid['messages'] = $connect -> error;
 	}
 	 
 	$connect->close();

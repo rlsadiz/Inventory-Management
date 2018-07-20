@@ -18,7 +18,7 @@ if($_POST) {
 		$valid['messages'] = "Successfully Update";	
 	} else {
 		$valid['success'] = false;
-		$valid['messages'] = "Error while updating product info";
+		$valid['messages'] = $connect -> error;
 	}
 
 } // /$_POST

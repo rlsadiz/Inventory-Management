@@ -4,23 +4,23 @@
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> Manage SKU</div>
+				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> Manage Supplier</div>
 			</div> <!-- /panel-heading -->
 			<div class="panel-body">
 
 				<div class="remove-messages"></div>
 				<div class="div-action pull pull-right" style="padding-bottom:20px;">
-					<button class="btn btn-default" style="width:140px" data-toggle="modal" id="addSKUBtn" data-target="#addSKUModal"> <i class="glyphicon glyphicon-plus-sign"></i> Add SKU </button>
+					<button class="btn btn-default" style="width:140px" data-toggle="modal" id="addSupplierBtn" data-target="#addSupplierModal"> <i class="glyphicon glyphicon-plus-sign"></i> Add Supplier </button>
 				</div> <!-- /div-action -->				
 				
-				<table class="table" id="manageSKUTable">
+				<table class="table" id="manageSupplierTable">
 					<thead>
 						<tr>
-							<th style="width:10%">Barcode</th>
-							<th style="width:15%">SKU Code</th>
-							<th style="width:35%">SKU Name</th>
-							<th style="width:10%">Cost</th>
-							<th style="width:10%">Price</th>
+							<th style="width:12%">Supplier Code</th>
+							<th style="width:30%">Name</th>
+							<th style="width:12%">Phone</th>
+							<th style="width:12%">Email</th>
+							<th style="width:14%">Contact Person</th>
 							<th style="width:10%">Status</th>
 							<th style="width:10%">Options</th>
 						</tr>
@@ -34,73 +34,65 @@
 
 
 <!-- add sku -->
-<div class="modal fade" id="addSKUModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="addSupplierModal" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
 
-    	<form class="form-horizontal" id="submitSKUForm" action="php_action/createSKU.php" method="POST" enctype="multipart/form-data">
+    	<form class="form-horizontal" id="submitSupplierForm" action="php_action/createSupplier.php" method="POST" enctype="multipart/form-data">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title"><i class="fa fa-plus"></i> Add SKU</h4>
+				<h4 class="modal-title"><i class="fa fa-plus"></i> Add Supplier</h4>
 			</div>
 		  
 			<div class="modal-body" style="max-height:450px; overflow:auto;">
 
-				<div id="add-sku-messages"></div>     	           	       
+				<div id="add-supplier-messages"></div>     	           	       
 
 				<div class="form-group">
-					<label for="productName" class="col-sm-3 control-label">Product Code: </label>
+					<label for="supplierName" class="col-sm-3 control-label">Supplier Name </label>
 					<label class="col-sm-1 control-label">: </label>
 						<div class="col-sm-7">
-							<input type="text" class="form-control" id="productCode" placeholder="Product Code" name="productCode" autocomplete="off">
+							<input type="text" class="form-control" id="supplierName" placeholder="Supplier Name" name="supplierName" autocomplete="off">
 				    </div>
 				</div> <!-- /form-group-->	       	        
 			
 				<div class="form-group">
-					<label for="productName" class="col-sm-3 control-label">Variation: </label>
+					<label for="street_address" class="col-sm-3 control-label">Street Address: </label>
 					<label class="col-sm-1 control-label">: </label>
 						<div class="col-sm-7">
-							<input type="text" class="form-control" id="variation" placeholder="Variation" name="variation" autocomplete="off">
+							<input type="text" class="form-control" id="street_address" placeholder="Street Address" name="street_address" autocomplete="off">
 				    </div>
 				</div> <!-- /form-group-->	
 				
 				<div class="form-group">
-					<label for="barcode" class="col-sm-3 control-label">Barcode: </label>
+					<label for="region_address" class="col-sm-3 control-label">Region Address: </label>
 					<label class="col-sm-1 control-label">: </label>
 						<div class="col-sm-7">
-						  <input type="number" class="form-control" id="barcode" placeholder="Barcode" name="barcode" autocomplete="off">
+						  <input type="text" class="form-control" id="region_address" placeholder="Region Address" name="region_address" autocomplete="off">
 						</div>
 				</div> <!-- /form-group-->	
 				
 				<div class="form-group">
-					<label for="cost" class="col-sm-3 control-label">Cost: </label>
+					<label for="phone" class="col-sm-3 control-label">Phone: </label>
 					<label class="col-sm-1 control-label">: </label>
 						<div class="col-sm-7">
-						  <input type="number" step="0.01" class="form-control" id="cost" placeholder="Cost" name="cost" autocomplete="off">
+						  <input type="number" class="form-control" id="phone" placeholder="Phone" name="phone" autocomplete="off">
 						</div>
 				</div> <!-- /form-group-->		
 				
 				<div class="form-group">
-					<label for="price" class="col-sm-3 control-label">Price: </label>
+					<label for="email" class="col-sm-3 control-label">Email: </label>
 					<label class="col-sm-1 control-label">: </label>
 						<div class="col-sm-7">
-						  <input type="number" step="0.01" class="form-control" id="price" placeholder="Price" name="price" autocomplete="off">
+						  <input type="text" class="form-control" id="email" placeholder="Email" name="email" autocomplete="off">
 						</div>
 				</div> <!-- /form-group-->
 
 				<div class="form-group">
-					<label for="stock" class="col-sm-3 control-label">Initial Stock: </label>
+					<label for="contact_person" class="col-sm-3 control-label">Contact Person: </label>
 					<label class="col-sm-1 control-label">: </label>
 						<div class="col-sm-7">
-						  <input type="number" class="form-control" id="stock" placeholder="Stock" name="stock" autocomplete="off">
-						</div>
-				</div> <!-- /form-group-->	
-				
-				<div class="form-group">
-					<label for="critical_stock" class="col-sm-3 control-label">Critical Stock: </label>
-					<label class="col-sm-1 control-label">: </label>
-						<div class="col-sm-7">
-						  <input type="number" class="form-control" id="criticalStock" placeholder="Critical Stock" name="criticalStock" autocomplete="off">
+						  <input type="text" class="form-control" id="contact_person" placeholder="Contact Person" name="contact_person" autocomplete="off">
 						</div>
 				</div> <!-- /form-group-->				
 
@@ -120,7 +112,7 @@
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Close</button>
 	        
-	        <button type="submit" class="btn btn-primary" id="createSKUbtn" data-loading-text="Loading..." autocomplete="off"> <i class="glyphicon glyphicon-ok-sign"></i> Save Changes</button>
+	        <button type="submit" class="btn btn-primary" id="createSupplierbtn" data-loading-text="Loading..." autocomplete="off"> <i class="glyphicon glyphicon-ok-sign"></i> Save Changes</button>
 	      </div> <!-- /modal-footer -->	      
      	</form> <!-- /.form -->	     
     </div> <!-- /modal-content -->    
@@ -199,7 +191,9 @@
 							<option value="2">Inactive</option>
 						  </select>
 						</div>
-				</div> <!-- /form-group-->	         	            	
+				</div> <!-- /form-group-->	   
+
+				<button type="button" class="btn btn-success" id="editSKUbtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-ok-sign"></i> Save Changes</button>				
 			</div> <!-- /modal-body -->
 		
 			<div class="modal-footer editProductFooter">
@@ -236,6 +230,6 @@
 <!-- /remove product -->
 
 
-<script src="custom/js/sku.js"></script>
+<script src="custom/js/supplier.js"></script>
 
 <?php require_once 'includes/footer.php'; ?>

@@ -16,7 +16,7 @@ if($productId) {
 	$valid['messages'] = "Successfully Removed";		
  } else {
  	$valid['success'] = false;
- 	$valid['messages'] = "Error while remove the brand";
+ 	$valid['messages'] = $connect -> error;
  }
  
  $connect->close();

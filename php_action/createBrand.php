@@ -29,12 +29,6 @@ if($_POST) {
 				$brand_code = strtoupper(substr($brand_word[0], 0, 4)).strtoupper(substr($brand_word[0], strlen($brand_word[0]) - 1, 1));
 			}
 		}
-		else if(count($brand_word) == 2) {
-			
-		}
-		else {
-			$brand_code = "LOLOL";
-		}
 	}
 	
 	$sql = "INSERT INTO brand (fk_user, brand_code, brand_name, brand_status) VALUES ($user_id, '$brand_code', '$brandName', '$brandStatus')";
@@ -43,7 +37,7 @@ if($_POST) {
 		$valid['messages'] = "Successfully Added";	
 	} else {
 	 	$valid['success'] = false;
-	 	$valid['messages'] = "Error while adding the members";
+	 	$valid['messages'] = $connect -> error;
 	}
 	 
 

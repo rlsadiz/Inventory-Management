@@ -2,16 +2,15 @@
 require_once 'core.php';
 
 $sql = "SELECT 
-			sku.id_sku,
-			sku.barcode, 
-			sku.sku_code, 
-			CONCAT(p.product_name, ' ', sku.variation) sku_name,
-			sku.cost,
-			sku.price,
-			sku.sku_status
-		FROM product_sku sku
-		JOIN product p ON p.id_product = sku.fk_product
-		WHERE sku_status != 3";
+			sup.id_supplier,
+			sup.supplier_code,
+			sup.supplier_name,
+			sup.supplier_phone,
+			sup.supplier_email,
+			sup.contact_person,
+			sup.supplier_status
+		FROM supplier sup
+		WHERE supplier_status != 3";
 
 $result = $connect->query($sql);
 $output = array('data' => array());
@@ -20,9 +19,9 @@ if($result->num_rows > 0) {
 	 // $row = $result->fetch_array();
 	 $active = ""; 
 	 while($row = $result->fetch_array()) {
-		$skuId = $row['id_sku'];
+		$supId = $row['id_supplier'];
 		// active 
-		if($row['sku_status'] == 1) {
+		if($row['supplier_status'] == 1) {
 			// activate member
 			$active = "<label class='label label-success'>Active</label>";
 		} else {
@@ -36,8 +35,8 @@ if($result->num_rows > 0) {
 			Action <span class="caret"></span>
 		  </button>
 		  <ul class="dropdown-menu">
-			<li><a type="button" data-toggle="modal" id="editSKUBtn" data-target="#editSKUModal" onclick="editSKU('.$skuId.')"> <i class="glyphicon glyphicon-edit"></i> Edit</a></li>
-			<li><a type="button" data-toggle="modal" id="removeSKUlBtn" data-target="#removeSKUModal"  onclick="removeSKU('.$skuId.')"> <i class="glyphicon glyphicon-trash"></i> Remove</a></li>       
+			<li><a type="button" data-toggle="modal" id="editSupplierBtn" data-target="#editSupplierModal" onclick="editSupplier('.$supId.')"> <i class="glyphicon glyphicon-edit"></i> Edit</a></li>
+			<li><a type="button" data-toggle="modal" id="removeSupplierBtn" data-target="#removeSupplierModal"  onclick="removeSupplier('.$supId.')"> <i class="glyphicon glyphicon-trash"></i> Remove</a></li>       
 		  </ul>
 		</div>';
 
@@ -50,13 +49,13 @@ if($result->num_rows > 0) {
 		// }
 
 		$output['data'][] = array( 		
-			$row['barcode'],
-			$row['sku_code'],
-			$row['sku_name'],
-			$row['cost'],		
-			$row['price'],
+			$row['supplier_code'],
+			$row['supplier_name'],
+			$row['supplier_phone'],
+			$row['supplier_email'],		
+			$row['contact_person'],
 			$active,
-			$button 		
+			$button
 			); 	
 	 } // /while 
 }// if num_rows

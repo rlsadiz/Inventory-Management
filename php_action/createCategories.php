@@ -63,7 +63,7 @@ if($_POST) {
 		$valid['messages'] = "Successfully Added";	
 	} else {
 	 	$valid['success'] = false;
-	 	$valid['messages'] = "Error while adding the members";
+	 	$valid['messages'] = $connect -> error;
 		echo $connect->error;
 	}
 

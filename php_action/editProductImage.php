@@ -22,7 +22,7 @@ $type = explode('.', $_FILES['editProductImage']['name']);
 					$valid['messages'] = "Successfully Updated";	
 				} else {
 					$valid['success'] = false;
-					$valid['messages'] = "Error while updating product image";
+					$valid['messages'] = $connect -> error;
 				}
 			}	else {
 				return false;

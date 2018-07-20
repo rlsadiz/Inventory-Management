@@ -51,12 +51,12 @@ if($_POST) {
 
 		} else {
 			$valid['success'] = false;
-			$valid['messages'] = "Error: while adding the SKU";
+			$valid['messages'] = $connect -> error;	
 		}
 	}
 	else {
 		$valid['success'] = false;
-		$valid['messages'] = "Error: no product found";
+		$valid['messages'] =  $connect -> error;	
 	}
 
 	$connect->close();

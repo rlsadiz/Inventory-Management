@@ -2,108 +2,74 @@ var manageSKUTable;
 
 $(document).ready(function() {
 	// top nav bar 
-	$('#navProduct').addClass('active');
+	$('#navSupplier').addClass('active');
 	
 	// manage product data table
-	manageSKUTable = $('#manageSKUTable').DataTable({
-		'columnDefs': [{className: "text-right", targets: [3, 4]}],
-		'ajax': 'php_action/fetchSKU.php',
+	manageSupplierTable = $('#manageSupplierTable').DataTable({
+		'ajax': 'php_action/fetchSupplier.php',
 		'order': []
 	});
 	
 	// add product modal btn clicked
-	$("#addSKUBtn").unbind('click').bind('click', function() {
-		// // product form reset
-		$("#submitSKUForm")[0].reset();		
-
+	$("#addSupplierBtn").unbind('click').bind('click', function() {
+		
 		// remove text-error 
 		$(".text-danger").remove();
 		// remove from-group error
 		$(".form-group").removeClass('has-error').removeClass('has-success');
 
 		// submit product form
-		$("#submitSKUForm").unbind('submit').bind('submit', function() {
+		$("#submitSupplierForm").unbind('submit').bind('submit', function() {
 			// form validation
-			var productCode = $("#productCode").val();
-			var variation = $("#variation").val();
-			var barcode = $("#barcode").val();
-			var cost = $("#cost").val();
-			var price = $("#price").val();
-			var stock = $("#stock").val();
-			var criticalStock = $("#criticalStock").val();
-			var skuStatus = $("#status").val();
+			var supplierName = $("#supplierName").val();
+			var street_address = $("#street_address").val();
+			var region_address = $("#region_address").val();
+			var phone = $("#phone").val();
+			var email = $("#email").val();
+			var contact_person = $("#contact_person").val();
+			var supplier_status = $("#status").val();
 	
-			if(productCode == "") {
-				$("#productImage").closest('.center-block').after('<p class="text-danger">Product Code field is required</p>');
-				$('#productImage').closest('.form-group').addClass('has-error');
+			if(supplierName == "") {
+				$("#supplierName").closest('.center-block').after('<p class="text-danger">Supplier Name field is required</p>');
+				$('#supplierName').closest('.form-group').addClass('has-error');
 			}	else {
 				// remov error text field
-				$("#productImage").find('.text-danger').remove();
+				$("#supplierName").find('.text-danger').remove();
 				// success out for form 
-				$("#productImage").closest('.form-group').addClass('has-success');	  	
+				$("#supplierName").closest('.form-group').addClass('has-success');	  	
 			}	// /else
 
-			if(variation == "") {
-				$("#variation").after('<p class="text-danger">Variation field is required</p>');
-				$('#variation').closest('.form-group').addClass('has-error');
+			if(street_address == "") {
+				$("#street_address").after('<p class="text-danger">Street Address field is required</p>');
+				$('#street_address').closest('.form-group').addClass('has-error');
 			}	else {
 				// remov error text field
-				$("#variation").find('.text-danger').remove();
+				$("#street_address").find('.text-danger').remove();
 				// success out for form 
-				$("#variation").closest('.form-group').addClass('has-success');	  	
+				$("#street_address").closest('.form-group').addClass('has-success');	  	
 			}	// /else
 
-			if(barcode == "") {
-				$("#barcode").after('<p class="text-danger">Barcode field is required</p>');
-				$('#barcode').closest('.form-group').addClass('has-error');
+			if(region_address == "") {
+				$("#region_address").after('<p class="text-danger">Region Address field is required</p>');
+				$('#region_address').closest('.form-group').addClass('has-error');
 			}	else {
 				// remov error text field
-				$("#barcode").find('.text-danger').remove();
+				$("#region_address").find('.text-danger').remove();
 				// success out for form 
-				$("#barcode").closest('.form-group').addClass('has-success');	  	
+				$("#region_address").closest('.form-group').addClass('has-success');	  	
 			}	// /else
 
-			if(cost == "") {
-				$("#cost").after('<p class="text-danger">Cost field is required</p>');
-				$('#cost').closest('.form-group').addClass('has-error');
+			if(phone == "") {
+				$("#phone").after('<p class="text-danger">Phone field is required</p>');
+				$('#phone').closest('.form-group').addClass('has-error');
 			}	else {
 				// remov error text field
-				$("#cost").find('.text-danger').remove();
+				$("#phone").find('.text-danger').remove();
 				// success out for form 
-				$("#cost").closest('.form-group').addClass('has-success');	  	
-			}	// /else
-
-			if(price == "") {
-				$("#price").after('<p class="text-danger">Price field is required</p>');
-				$('#price').closest('.form-group').addClass('has-error');
-			}	else {
-				// remov error text field
-				$("#price").find('.text-danger').remove();
-				// success out for form 
-				$("#price").closest('.form-group').addClass('has-success');	  	
-			}	// /else
-			
-			if(stock == "") {
-				$("#stock").after('<p class="text-danger">Stock field is required</p>');
-				$('#stock').closest('.form-group').addClass('has-error');
-			}	else {
-				// remov error text field
-				$("#stock").find('.text-danger').remove();
-				// success out for form 
-				$("#stock").closest('.form-group').addClass('has-success');	  	
+				$("#phone").closest('.form-group').addClass('has-success');	  	
 			}	// /else
 		
-			if(criticalStock == "") {
-				$("#criticalStock").after('<p class="text-danger">Critical Stock field is required</p>');
-				$('#criticalStock').closest('.form-group').addClass('has-error');
-			}	else {
-				// remov error text field
-				$("#criticalStock").find('.text-danger').remove();
-				// success out for form 
-				$("#criticalStock").closest('.form-group').addClass('has-success');	  	
-			}	// /else
-		
-			if(skuStatus == "") {
+			if(supplier_status == "") {
 				$("#status").after('<p class="text-danger">Status field is required</p>');
 				$('#status').closest('.form-group').addClass('has-error');
 			}	else {
@@ -113,10 +79,10 @@ $(document).ready(function() {
 				$("#status").closest('.form-group').addClass('has-success');	  	
 			}
 
-			if(productCode && variation && barcode && cost && price && stock && criticalStock && skuStatus) {
+			if(supplierName && street_address && region_address && phone && supplier_status) {
 				// submit loading button
-				$("#createSKUbtn").button('loading');
-				
+				$("#createSupplierbtn").button('loading');
+				console.log("lol");
 				var form = $(this);
 				var formData = new FormData(this);
 				$.ajax({
@@ -129,13 +95,13 @@ $(document).ready(function() {
 					processData: false,
 					success:function(response) {
 						// submit loading button
-						$("#createSKUbtn").button('reset');
+						$("#createSupplierbtn").button('reset');
 						if(response.success == true) {
 							// reload the manage product table
-							manageSKUTable.ajax.reload(null, false);
+							manageSupplierTable.ajax.reload(null, false);
 							
 							// reset the form text
-							$("#submitSKUForm")[0].reset();
+							$("#submitSupplierForm")[0].reset();
 							// remove text-error 
 							$(".text-danger").remove();
 							// remove from-group error
@@ -144,7 +110,7 @@ $(document).ready(function() {
 							//$("html, body, div.modal, div.modal-content, div.modal-body").animate({scrollTop: '0'}, 100);
 																	
 							// shows a successful message after operation
-							$('#add-sku-messages').html('<div class="alert alert-success">'+
+							$('#add-supplier-messages').html('<div class="alert alert-success">'+
 							'<button type="button" class="close" data-dismiss="alert">&times;</button>'+
 							'<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
 							'</div>');
